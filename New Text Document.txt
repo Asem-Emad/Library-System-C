@@ -1,0 +1,49 @@
+void DeleteBook(int BookNum)
+{
+    Scan() ;
+    int Book_ID ;
+    int i = 0 ;
+    printf("Enter the Book ID to  delete:") ;
+    scanf("%d",&Book_ID) ;
+    FILE *fptr = fopen("asem.txt","w") ;
+    while(BookNum){
+        if(Book_ID!=Book[i].ID){
+            fprintf(fptr,"%d %d",Book[i].ID,Book[i].quantity) ;
+            fputs(Book[i].name,fptr) ;
+            if(BookNum != 1)
+                fprintf(fptr,"\n") ;
+            }
+        i++ ;
+        BookNum-- ;
+        }
+    Scan() ;
+    for(int h = 0 ; h < i ; h++)
+        printf("%d\t%d\t\t%s\n",Book[h].ID,Book[h].quantity,Book[h].name) ;
+    printf("Successfully deleted :)..\n") ;
+}
+00000000000000000000000000000000000000000000000000
+void del(int did)
+{
+   FILE *file;
+   file = fopen("books.txt","r");
+   int i=0;
+   while(!feof(file))
+   {
+       fscanf(file,"%d %d %s\n",&r[i].id,&r[i].quan,r[i].name);
+       i++;
+   }
+   fclose(file);
+   FILE *fp;
+   fp=fopen("books.txt","w");
+   int z=0;
+   while(!feof(fp))
+    {
+        if (did==r[z].id)
+            continue;
+         else
+            fprintf(fp,"%d %d %s\n",r[z].id,r[z].quan,r[z].name);
+
+        z++;
+    }
+    fclose(fp);
+}
